@@ -3563,7 +3563,7 @@
         if (tick == null || tick >= 2000000) return "";
 
         // Canonical start is UTC
-        const startUTC = new Date(SIM_START_TIME);
+        const startUTC = SIM_START_TIME;
 
         // Add ticks (1 tick = 1 minute)
         const callUTC = new Date(startUTC.getTime() + tick * SIM_MS_PER_TICK);
