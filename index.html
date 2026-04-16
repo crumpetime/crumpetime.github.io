@@ -1296,7 +1296,7 @@
 
       let stateFeatures = [];
 
-      fetch("http://crumpetime.github.io/states.geojson")
+      fetch("https://crumpetime.github.io/states.geojson")
         .then(r => r.json())
         .then(states => {
           statesLayer = L.geoJSON(states, {
@@ -2943,7 +2943,7 @@
 
       let countyCentroids = {};
 
-      fetch("http://crumpetime.github.io/counties.geojson")
+      fetch("https://crumpetime.github.io/counties.geojson")
         .then(r => r.json())
         .then(async data => {
           countiesData = data;
