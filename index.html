@@ -1070,7 +1070,7 @@
           }
         });
 
-        return new Date(Date.UTC(res.headers.get("Date")));
+        return new Date(res.headers.get("Date"));
       }
 
 
