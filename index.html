@@ -3398,7 +3398,7 @@
               return countiesData.features.every(f => f.counting?.done);
             }
 
-            const FAST = true;
+            const FAST = false;
 
             async function fastForwardToTick(targetTick) {
               const overlay = document.getElementById("loadingOverlay");
