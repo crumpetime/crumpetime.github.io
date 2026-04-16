@@ -1070,14 +1070,14 @@
           }
         });
 
-        return new Date(res.headers.get("Date"));
+        return new Date(Date.UTC(res.headers.get("Date")));
       }
 
 
       async function syncTick() {
         const serverTime = await getServerTime();
         const now = serverTime.getTime();
-        console.log("time recieved is: " + (new Date(now)).toLocaleString("en-GB", { timeZone: "EST" }));
+        //console.log("time recieved is: " + (new Date(now)).toLocaleString("en-GB", { timeZone: "EST" }));
         //console.log("current server time: " + now.toLocaleString("en-GB", { timeZone: "EST" }));
         const delta = now - SIM_START_TIME;
         currentTick = Math.max(0, Math.floor(delta / TICK_MS));
