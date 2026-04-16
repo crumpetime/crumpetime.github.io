@@ -1076,7 +1076,7 @@
 
       async function syncTick() {
         const serverTime = await getServerTime();
-        const now = serverTime.getTime();
+        const now = serverTime.getUTCTime();
         //console.log("time recieved is: " + (new Date(now)).toLocaleString("en-GB", { timeZone: "EST" }));
         //console.log("current server time: " + now.toLocaleString("en-GB", { timeZone: "EST" }));
         const delta = now - SIM_START_TIME;
