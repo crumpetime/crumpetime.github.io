@@ -3566,12 +3566,15 @@
         //const startUTC = new Date();
 
         // Add ticks (1 tick = 1 minute)
-        const callUTC = new Date(SIM_START_TIME.getUTCTime() + tick * SIM_MS_PER_TICK);
+        const callTime = new Date(SIM_START_TIME.getUTCTime() + tick * SIM_MS_PER_TICK);
 
+
+        const callUTCDate = callTime.getUTCDate();
         // Convert UTC → ET (UTC-5)
         //const ET_OFFSET = -5;
         //const callET = new Date(callUTC.getTime() + ET_OFFSET * 3600_000);
-        const callET = new Date(callUTC.getUTCTime() - 5 * 3600_000);
+        const callET = new Date(callTime.getUTCTime() - 5 * 3600_000);
+        console.log("UTC Time caculated as " + callTime.getUTCTime());
 
         // Extract components
         const month = callET.toLocaleString("en-US", { month: "short" }); // "Nov"
