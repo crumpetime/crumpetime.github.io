@@ -3566,7 +3566,7 @@
         //const startUTC = new Date();
 
         // Add ticks (1 tick = 1 minute)
-        const callTime = new Date(SIM_START_TIME.getUTCTime() + tick * SIM_MS_PER_TICK);
+        const callTime = new Date(SIM_START_TIME + tick * SIM_MS_PER_TICK);
 
 
         const callUTCDate = callTime.getUTCDate();
