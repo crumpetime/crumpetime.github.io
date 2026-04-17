@@ -1070,14 +1070,15 @@
           }
         });
 
-        return new Date(Date.UTC(res.headers.get("Date")));
+        //return new Date(Date.UTC(res.headers.get("Date")));
+        return new Date(res.headers.get("Date"));
       }
 
 
       async function syncTick() {
         const serverTime = await getServerTime();
         const now = serverTime.getTime();
-        console.log("time recieved is: " + (new Date(now)).toLocaleString("en-GB", { timeZone: "EST" }));
+        console.log("time recieved is: " + now.toLocaleString("en-GB", { timeZone: "EST" }));
         console.log("current server time: " + now.toLocaleString("en-GB", { timeZone: "EST" }));
         const delta = now - SIM_START_TIME;
         currentTick = Math.max(0, Math.floor(delta / TICK_MS));
@@ -3573,14 +3574,14 @@
         // Convert UTC → ET (UTC-5)
         //const ET_OFFSET = -5;
         //const callET = new Date(callUTC.getTime() + ET_OFFSET * 3600_000);
-        const callET = new Date(callTime.getTime() - 5 * 3600_000);
-        console.log("UTC Time caculated as " + callTime.getTime());
+        const callET = new Date(callTime.getTime());
+        //console.log("UTC Time caculated as " + callTime.getTime());
 
         // Extract components
-        const month = callET.toLocaleString("en-US", { month: "short" }); // "Nov"
-        const day = callET.getDate();                                     // 5
-        const hours = callET.getHours();
-        const minutes = callET.getMinutes().toString().padStart(2, "0");
+        const month = callET.toLocaleString("en-US", { month: "short", timeZone: "EST" }); // "Nov"
+        const day = callET.getDate().toLocaleString("en-US", { day: "numeric", timeZone: "EST" });                                     // 5
+        const hours = callET.getHours().toLocaleString("en-US", { hour: "numeric", timeZone: "EST" });
+        const minutes = callET.getMinutes().toLocaleString("en-US", { minute: "numeric", timeZone: "EST" }).padStart(2, "0");
 
         const hour12 = ((hours + 11) % 12) + 1;
         const ampm = hours >= 12 ? "PM" : "AM";
