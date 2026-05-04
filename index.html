@@ -215,7 +215,7 @@
   background: #fafafa;
   border-bottom: 1px solid #ddd;
 ">
-    <span>yup</span>
+    <span></span>
   </div>
 
   <div id="evBarContainer" style="
@@ -3504,7 +3504,7 @@
               syncTick().then(() => {
                 console.log("current tick: " + currentTick);
                 console.log("current sim time: " + formatCallTime(currentTick));
-                
+                document.getElementById("toolbar").innerHTML = "<span>" + formatCallTime(currentTick,0) + "</span>";
                 //console.log("global finish tick: " + GLOBAL_FINISH_TICK);
 
                 if (currentTick >= GLOBAL_FINISH_TICK) {
@@ -3531,11 +3531,12 @@
                   });
                   return;
                 }
-                const tickNow = currentTick;
-                if (tickNow <= lastSimulatedTick) return;
+
+
+                if (currentTick <= lastSimulatedTick) return;
 
                 countiesData.features.forEach(f => {
-                  countVotesInRange(f, lastSimulatedTick, tickNow);
+                  countVotesInRange(f, lastSimulatedTick, currentTick);
                 });
 
                 lastSimulatedTick = tickNow;
@@ -3560,7 +3561,7 @@
       }
 
 
-      function formatCallTime(tick) {
+      function formatCallTime(tick, format = 1) {
         if (tick == null || tick >= 2000000) return "";
 
         // Canonical start is UTC
@@ -3585,8 +3586,12 @@
 
         const hour12 = ((hours + 11) % 12) + 1;
         const ampm = hours >= 12 ? "PM" : "AM";
-
-        return `${hour12}:${minutes} ${ampm} ET on ${month} ${day}`;
+        if (format == 0){
+          return `${hour12}:${minutes} ${ampm} | ${month}/${day}`;
+        }
+        if (format == 1){
+          return `${hour12}:${minutes} ${ampm} ET on ${month} ${day}`;
+        }
       }
 
 
