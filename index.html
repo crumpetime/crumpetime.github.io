@@ -1043,8 +1043,8 @@
       //console.log("start date (UTC): " + SIM_START_TIME.toUTCString());
       console.log("start date: " + SIM_START_TIME.toLocaleString("en-GB", { timeZone: "EST" }));
 
-      const SIM_MS_PER_TICK = 30000 //default = 60000 (1 minute)
-      const TICK_MS = 30000;
+      const SIM_MS_PER_TICK = 60000 //default = 60000 (1 minute)
+      const TICK_MS = 60000;
 
       let currentTick = 0;
       let lastSimulatedTick = 0;
@@ -3476,7 +3476,7 @@
         //const startUTC = new Date();
 
         // Add ticks (1 tick = 1 minute)
-        const callTime = new Date(SIM_START_TIME.getTime() + tick * SIM_MS_PER_TICK);
+        const callTime = new Date(SIM_START_TIME.valueOf() + tick * SIM_MS_PER_TICK);
 
 
         const callUTCDate = callTime.getDate();
