@@ -2731,14 +2731,14 @@
 
         ];
 
-        const url =
-          `https://api.census.gov/data/${YEAR}/acs/acs5?` +
-          `get=NAME,${VARS.join(",")}&for=county:*`;
+        //const url =
+        //  `https://api.census.gov/data/${YEAR}/acs/acs5?` +
+        //  `get=NAME,${VARS.join(",")}&for=county:*`;
 
-        const urlCT = `https://api.census.gov/data/2020/acs/acs5?get=NAME,${VARS.join(",")}&for=county:*&in=state:09`;
+        //const urlCT = `https://api.census.gov/data/2020/acs/acs5?get=NAME,${VARS.join(",")}&for=county:*&in=state:09`;
 
 
-        const res = await fetch(url);
+        const res = await fetch("https://crumpetime.github.io/demographics.json");
         const json = await res.json();
 
         const header = json[0];
@@ -2852,82 +2852,6 @@
 
 
         });
-
-        {
-          const urlCT =
-            `https://api.census.gov/data/2020/acs/acs5?` +
-            `get=NAME,${VARS.join(",")}&for=county:*&in=state:09`;
-
-          try {
-            const resCT = await fetch(urlCT);
-            const jsonCT = await resCT.json();
-
-            const headerCT = jsonCT[0];
-            const rowsCT = jsonCT.slice(1);
-
-            rowsCT.forEach(r => {
-              const obj = {};
-              headerCT.forEach((h, i) => obj[h] = r[i]);
-
-              const state = obj.state.padStart(2, "0");
-              const county = obj.county.padStart(3, "0");
-              const fips = state + county;
-
-              // Reuse existing parsing logic
-              demoLookup[fips] = {
-                vap: Number(obj["B29001_001E"]),
-                population: Number(obj["B01003_001E"]),
-
-                pop18to29: Number(obj["B29001_002E"]),
-                pop30to44: Number(obj["B29001_003E"]),
-                pop45to64: Number(obj["B29001_004E"]),
-                pop65over: Number(obj["B29001_005E"]),
-
-                white: Number(obj["B02001_002E"]),
-                black: Number(obj["B02001_003E"]),
-                asian: Number(obj["B02001_005E"]),
-                hispanic: Number(obj["B03003_003E"]),
-                medianAge: Number(obj["B01002_001E"]),
-                educationCollege: Number(obj["B29002_001E"]) / Number(obj["B29001_001E"]),
-                educationHS: Number(obj["B15003_017E"]),
-                educationBA: Number(obj["B15003_022E"]),
-                educationGrad: Number(obj["B15003_023E"]) +
-                  Number(obj["B15003_024E"]) +
-                  Number(obj["B15003_025E"]),
-                medianIncome: Number(obj["B19013_001E"]),
-                poverty: Number(obj["B17001_002E"]),
-                housingUnits: Number(obj["B25003_001E"]),
-                ownerOccupied: Number(obj["B25003_002E"]),
-                renterOccupied: Number(obj["B25003_003E"]),
-                medianHomeValue: Number(obj["B25077_001E"]),
-                foreignBorn: Number(obj["B05002_013E"]),
-                limitedEnglish: Number(obj["B06007_005E"]),
-                movedDomestic: Number(obj["B07003_007E"]),
-                movedInternational: Number(obj["B07003_008E"]),
-                stayedPut: Number(obj["B07003_004E"]),
-                industry: {
-                  agriculture: Number(obj["C24050_002E"]),
-                  construction: Number(obj["C24050_003E"]),
-                  manufacturing: Number(obj["C24050_004E"]),
-                  retail: Number(obj["C24050_006E"]),
-                  info: Number(obj["C24050_008E"]),
-                  finance: Number(obj["C24050_009E"]),
-                  professional: Number(obj["C24050_010E"]),
-                  education: Number(obj["C24050_011E"]),
-                  healthcare: Number(obj["C24050_012E"]),
-                  hospitality: Number(obj["C24050_013E"]),
-                  publicAdmin: Number(obj["C24050_014E"]),
-                },
-                newHousing: Number(obj["B25034_010E"]) + Number(obj["B25034_011E"]),
-              };
-            });
-
-            console.log("CT 2020 ACS merged successfully.");
-          } catch (err) {
-            console.error("Failed to load CT 2020 ACS:", err);
-          }
-        }
-
 
         countiesData.features.forEach(f => {
           const fips = f.properties.STATEFP + f.properties.COUNTYFP;
