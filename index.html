@@ -3581,11 +3581,11 @@
           boostDEM: -0.015
         },
 
-        "Ingham County, Michigan": {
-          radiusKm: 80,
-          boostDEM: -0.01,
-          boostOTH: +0.08
-        },
+       // "Ingham County, Michigan": {
+       //   radiusKm: 80,
+       //   boostDEM: -0.01,
+       //   boostOTH: +0.08
+       // },
 
         "Hill County, Montana": {
           radiusKm: 80,
@@ -3770,19 +3770,20 @@
 
       const DEMO_WEIGHTS = { //all are shifts relative to 2024
 
+
         // ---------------------------------------------------------
         // RACE
         // ---------------------------------------------------------
-        pctWhite: { d: +0.005, r: -0.005, o: 0, center: 0.65, scale: 0.22, absolute: false },
-        pctBlack: { d: -0.015, r: +0.012, o: 0, center: 0.18, scale: 0.18, absolute: true },
-        pctAsian: { d: +0.009, r: -0.0090, o: 0, center: 0.05, scale: 0.05, absolute: true },
-        pctHispanic: { d: +0.0068, r: -0.0055, o: 0, center: 0.12, scale: 0.10, absolute: true },
+        pctWhite: { d: +0.005, r: -0.005, o: +0.001, center: 0.65, scale: 0.22, absolute: false },
+        pctBlack: { d: +0.005, r: -0.002, o: 0, center: 0.18, scale: 0.18, absolute: true },
+        pctAsian: { d: +0.011, r: -0.0011, o: 0, center: 0.05, scale: 0.05, absolute: true },
+        pctHispanic: { d: -0.0158, r: +0.0155, o: 0, center: 0.12, scale: 0.10, absolute: true },
 
         // ---------------------------------------------------------
         // AGE
         // ---------------------------------------------------------
-        pct18to29: { d: -0.005, r: +0.006, o: +0.001, center: 0.18, scale: 0.10, absolute: true },
-        pct30to44: { d: +0.0021, r: -0.0011, o: 0, center: 0.22, scale: 0.10, absolute: true },
+        pct18to29: { d: +0.05, r: -0.06, o: +0.001, center: 0.18, scale: 0.10, absolute: true },
+        pct30to44: { d: +0.0041, r: -0.0041, o: 0, center: 0.22, scale: 0.10, absolute: true },
         pct45to64: { d: +0.0015, r: -0.0005, o: 0, center: 0.35, scale: 0.15, absolute: false },
         pct65over: { d: +0.0003, r: -0.0004, o: +0.0001, center: 0.18, scale: 0.10, absolute: false },
 
@@ -3791,23 +3792,23 @@
         // ---------------------------------------------------------
         educationCollege: { d: +0.03, r: -0.03, o: 0, center: 0.4, scale: 0.12, absolute: true },
         educationHS: { d: -0.01, r: +0.01, o: 0, center: 0.40, scale: 0.20, absolute: false },
-        educationBA: { d: +0.0145, r: -0.01, o: 0, center: 0.20, scale: 0.10, absolute: true },
-        educationGrad: { d: +0.004, r: -0.0030, o: 0, center: 0.10, scale: 0.05, absolute: true },
+        educationBA: { d: +0.04, r: -0.04, o: 0, center: 0.20, scale: 0.10, absolute: true },
+        educationGrad: { d: +0.04, r: -0.004, o: 0, center: 0.10, scale: 0.05, absolute: true },
 
         // ---------------------------------------------------------
         // INCOME — high‑income metros trend D; rural poverty trends R
         // ---------------------------------------------------------
-        medianIncome: { d: -0.013, r: +0.013, o: 0, center: 60000, scale: 10000, absolute: true },
-        pctPoverty: { d: -0.002, r: +0.002, o: 0, center: 0.15, scale: 0.10, absolute: false },
+        medianIncome: { d: +0.0065, r: -0.0055, o: 0, center: 60000, scale: 10000, absolute: true },
+        pctPoverty: { d: -0.004, r: +0.003, o: 0, center: 0.15, scale: 0.10, absolute: false },
 
         // ---------------------------------------------------------
         // HOUSING / DENSITY
         // ---------------------------------------------------------
         //density:         { d: +0.0045, r: -0.0025, o: 0, center: 350, scale: 550, absolute: true },
-        densityLow: { d: -0.04, r: +0.04, o: 0, center: 0.5, scale: 0.5, absolute: true },
-        densityHigh: { d: -0.0002, r: +0.0002, o: 0, center: 0.5, scale: 0.5, absolute: true },
+        densityLow: { d: -0.0415, r: +0.0415, o: 0, center: 0.5, scale: 0.5, absolute: true },
+        densityHigh: { d: -0.0004, r: +0.0004, o: 0, center: 0.5, scale: 0.5, absolute: true },
 
-        pctRenters: { d: +0.0035, r: -0.0030, o: 0, center: 0.35, scale: 0.18, absolute: true },
+        pctRenters: { d: +0.0405, r: -0.0400, o: 0, center: 0.35, scale: 0.18, absolute: true },
         pctHomeowners: { d: -0.0010, r: +0.0015, o: 0, center: 0.65, scale: 0.20, absolute: false },
         medianHomeValue: { d: +0.004, r: -0.004, o: 0, center: 275000, scale: 150000, absolute: true },
 
@@ -3820,18 +3821,18 @@
         // ---------------------------------------------------------
         // INDUSTRY
         // ---------------------------------------------------------
-        pctAgriculture: { d: +0.0012, r: 0.0015, o: 0, center: 0.05, scale: 0.05, absolute: true },
-        pctManufacturing: { d: -0.0010, r: +0.0012, o: 0, center: 0.10, scale: 0.10, absolute: true },
-        pctRetail: { d: +0.0022, r: -0.0026, o: 0, center: 0.10, scale: 0.10, absolute: true },
-        pctProfessional: { d: +0.0042, r: -0.0030, o: +0.001, center: 0.15, scale: 0.10, absolute: true },
+        pctAgriculture: { d: +0.0042, r: -0.0045, o: 0, center: 0.05, scale: 0.05, absolute: true },
+        pctManufacturing: { d: +0.0010, r: -0.0012, o: 0, center: 0.10, scale: 0.10, absolute: true },
+        pctRetail: { d: +0.0042, r: -0.0046, o: 0, center: 0.10, scale: 0.10, absolute: true },
+        pctProfessional: { d: +0.0072, r: -0.0070, o: +0.001, center: 0.15, scale: 0.10, absolute: true },
         pctEducation: { d: +0.0018, r: -0.0013, o: 0, center: 0.10, scale: 0.10, absolute: true },
-        pctHealthcare: { d: +0.0018, r: -0.0010, o: 0, center: 0.12, scale: 0.10, absolute: true },
-        pctPublicAdmin: { d: +0.0030, r: -0.0022, o: 0, center: 0.05, scale: 0.05, absolute: true },
+        pctHealthcare: { d: +0.0058, r: -0.0050, o: 0, center: 0.12, scale: 0.10, absolute: true },
+        pctPublicAdmin: { d: +0.0190, r: -0.0162, o: 0, center: 0.05, scale: 0.05, absolute: true },
 
         // ---------------------------------------------------------
         // HOUSING AGE
         // ---------------------------------------------------------
-        pctNewHousing: { d: +0.012, r: -0.012, o: 0, center: 0.10, scale: 0.10, absolute: true },
+        pctNewHousing: { d: +0.002, r: -0.002, o: 0, center: 0.10, scale: 0.10, absolute: true },
       };
 
       const DEMO_WEIGHTS_DEFAULT = { //all are shifts relative to 2024
