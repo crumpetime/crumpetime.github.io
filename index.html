@@ -3316,7 +3316,7 @@
               return countiesData.features.every(f => f.counting?.done);
             }
 
-            const FAST = false;
+            const FAST = true;
 
             async function fastForwardToTick(targetTick) {
               const overlay = document.getElementById("loadingOverlay");
@@ -3780,7 +3780,7 @@
         // ---------------------------------------------------------
         // RACE
         // ---------------------------------------------------------
-        pctWhite: { d: +0.004, r: -0.004, o: 0, center: 0.65, scale: 0.22, absolute: false },
+        pctWhite: { d: -0.204, r: +0.204, o: 0, center: 0.65, scale: 0.22, absolute: false },
         pctBlack: { d: +0.015, r: -0.012, o: 0, center: 0.18, scale: 0.18, absolute: true },
         pctAsian: { d: +0.009, r: -0.0090, o: 0, center: 0.05, scale: 0.05, absolute: true },
         pctHispanic: { d: +0.0068, r: -0.0055, o: 0, center: 0.12, scale: 0.10, absolute: true },
