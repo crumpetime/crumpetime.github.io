@@ -1023,14 +1023,11 @@
       map.setMaxBounds([[6, -256], [73.528399, 10]]);
 
       var cityLabelLayer;
-
-      /* ============================================================
-         SERVER TIME → DETERMINISTIC TICK
-      ============================================================ */
+      //get server time
 
       // Canonical simulation start (example: 8pm ET Nov 5, 2024 ≈ 2024-11-06T01:00:00Z)
       //const SIM_START_TIME = Date.UTC(2000,3,30,1,51,50);
-      const SIM_START_TIME = new Date(Date.UTC(2024, 10, 6, 1, 0, 0));
+      const SIM_START_TIME = new Date(Date.UTC(2026, 0, 7, 11, 35, 0));
       //const SIM_START_TIME = Date.now() + 10;
       //const SIM_START_TIME = new Date(Date.UTC(2026, 3, 10, 2, 15, 0));
 
@@ -1078,9 +1075,7 @@
         currentTick = Math.max(0, Math.floor(delta / TICK_MS));
       }
 
-      /* ============================================================
-         NORMALIZATION + MATCHING
-      ============================================================ */
+
       function normalizeName(str) {
         if (typeof str !== "string") return "";
         let s = str.toLowerCase()
@@ -1101,9 +1096,7 @@
         return s.replace(/\s+/g, "");
       }
 
-      /* ============================================================
-         LOAD STATES
-      ============================================================ */
+
       let called_states = {};
       let call_times = {};
       let called_districts = {};
@@ -3421,7 +3414,7 @@
               syncTick().then(() => {
                 console.log("current tick: " + currentTick);
                 console.log("current sim time: " + formatCallTime(currentTick));
-                document.getElementById("toolbar").innerHTML = "<span>" + formatCallTime(currentTick, 0) + "</span>";
+                //document.getElementById("toolbar").innerHTML = "<span>" + formatCallTime(currentTick, 0) + "</span>";
                 //console.log("global finish tick: " + GLOBAL_FINISH_TICK);
 
                 if (currentTick >= GLOBAL_FINISH_TICK) {
