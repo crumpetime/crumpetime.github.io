@@ -3493,7 +3493,7 @@
         //const ET_OFFSET = -5;
         //const callET = new Date(callUTC.getTime() + ET_OFFSET * 3600_000);
         const callET = new Date(callTime.getTime());
-        //console.log("UTC Time caculated as " + callTime.getTime());
+        console.log("UTC Time caculated as " + callTime.getTime());
 
         // Extract components
         const month = callET.toLocaleString("en-US", { month: "short", timeZone: "EST" }); // "Nov"
