@@ -3248,9 +3248,9 @@
                 const pop = f.demographics?.population || 1;
                 const popFactor = Math.min(1, Math.log10(pop) / 6);
 
-                const baseRate = 800;
+                const baseRate = 600;
                 const variability = 0.5;
-                const rate = Math.max(20, baseRate * ((popFactor / 2.5) + rngFloat(rng, variability)));
+                const rate = Math.max(20, baseRate * ((popFactor / 3) + rngFloat(rng, variability)));
 
                 const stateName = f.properties.STATE_NAME;
                 const stateStart = STATE_START_TIMES[stateName] || 0;
