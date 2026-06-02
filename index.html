@@ -1875,7 +1875,7 @@
             perTickRate = Math.max(100, Math.floor(rng() * 1000));
           } else {
             const rng = countyRNG(f.properties.GEOID);
-            perTickRate = c.rate + Math.floor(rng() * 10000);
+            perTickRate = c.rate + Math.floor(rng() * 1000);
             //perTickRate = c.rate;
           }
 
@@ -3078,16 +3078,12 @@
               y.totalvotes = row.totalvotes;
             });
 
-            /* ============================================================
-               FINAL TOTALS (year 1)
-            ============================================================ */
+      
             countiesData.features.forEach(f => {
               calculateVoteTotal(f);
             });
 
-            /* ============================================================
-               COUNTING MODEL INITIALIZATION
-            ============================================================ */
+            //counting stuff below here
 
             const STATE_START_TIMES = {
               "Alabama": 120,
@@ -3163,7 +3159,7 @@
                 const rng = countyRNG(f.properties.GEOID);
 
                 const baseRate = 1000;
-                const variability = 0.4;
+                const variability = 0.5;
                 const rate = Math.max(20, baseRate * (0.5 + rngFloat(rng, variability)));
 
                 const stateName = f.properties.STATE_NAME;
@@ -3176,8 +3172,8 @@
                 const sizeDelay = popFactor * 30;
                 const countyDelay = Math.floor(baseDelay + sizeDelay);
 
-                const lagFrequency = Math.floor(rng() * 200) + 150;
-                const lagDuration = Math.floor(rng() * 10) + 5;
+                const lagFrequency = Math.floor(rng() * 200) + 250;
+                const lagDuration = Math.floor(rng() * 15) + 10;
 
 
                 // 1. Copy default batches
@@ -3605,7 +3601,7 @@
         //const ET_OFFSET = -5;
         //const callET = new Date(callUTC.getTime() + ET_OFFSET * 3600_000);
         const callET = new Date(callTime.getTime());
-        console.log("UTC Time calculated as " + callTime.getTime());
+        //console.log("UTC Time calculated as " + callTime.getTime());
 
         // Extract components
         const month = callET.toLocaleString("en-US", { month: "short", timeZone: "EST" }); // "Nov"
