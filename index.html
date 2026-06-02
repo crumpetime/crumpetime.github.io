@@ -191,7 +191,7 @@
 
     #stateInfoPanelRight {
       max-width: 100vw;
-      width: 35vw;
+      width: 30vw;
       right: 5vw;
       position: absolute;
       top: 30vh;
@@ -207,7 +207,7 @@
 
     #stateInfoPanelLeft {
       max-width: 100vw;
-      width: 35vw;
+      width: 30vw;
       left: 5vw;
       position: absolute;
       top: 30vh;
@@ -1764,7 +1764,7 @@
 
             const batch = c.batches[c.currentBatch];
             const batchStart = c.startTick + batch.delay;
-            
+
             if (batch.dump) {
               // Apply all votes instantly
               const v = batch.votes;
@@ -3171,7 +3171,7 @@
 
             const DEFAULT_BATCHES = [
               { size: 0.25, delay: 0, skew: +0.09, early: true },  // early vote: 
-              { size: 0.6, delay: 1, skew: -0.065 },  // election day:
+              { size: 0.6, delay: 1, skew: -0.065, dump: true },  // election day:
               { size: 0.10, delay: 180, skew: +0.025 },  // late mail:
               { size: 0.05, delay: 480, skew: +0.01 },   // provisional:
               { size: 0.00, delay: 800, skew: +0.05, trickle: true } //late mail
@@ -3207,19 +3207,24 @@
                 // 1. Copy default batches
                 //let batches = DEFAULT_BATCHES.map(b => ({ ...b }));
                 let batches = DEFAULT_BATCHES.map(b => {
-                  const dumpVotes = {
-                    DEMOCRAT: Math.round(final.DEMOCRAT * b.size),
-                    REPUBLICAN: Math.round(final.REPUBLICAN * b.size),
-                    OTHER: Math.round(final.OTHER * b.size)
-                  };
-
-                  return {
-                    ...b,
-                    dump: true,
-                    votes: dumpVotes,
-                    counted: 0,
-                    done: false
-                  };
+                  if (b.dump){
+                    const dumpVotes = {
+                      DEMOCRAT: Math.round(final.DEMOCRAT * b.size),
+                      REPUBLICAN: Math.round(final.REPUBLICAN * b.size),
+                      OTHER: Math.round(final.OTHER * b.size)
+                    };
+                    
+                    return {
+                      ...b,
+                      dump: true,
+                      votes: dumpVotes,
+                      counted: 0,
+                      done: false
+                    };
+                  }
+                  else{
+                    return{ ...b };
+                  }
                 });
 
                 // 2. Randomize batch sizes slightly (±10%) — keep fractional
