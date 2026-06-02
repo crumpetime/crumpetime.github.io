@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>placeholder title</title>
+  <title>y'all what should i call this</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -3158,15 +3158,15 @@
 
                 const rng = countyRNG(f.properties.GEOID);
 
-                const baseRate = 1000;
+                const pop = f.demographics?.population || 1;
+                const popFactor = Math.min(1, Math.log10(pop) / 6);
+
+                const baseRate = 800;
                 const variability = 0.5;
-                const rate = Math.max(20, baseRate * (0.5 + rngFloat(rng, variability)));
+                const rate = Math.max(20, baseRate * ((popFactor / 2.5) + rngFloat(rng, variability)));
 
                 const stateName = f.properties.STATE_NAME;
                 const stateStart = STATE_START_TIMES[stateName] || 0;
-
-                const pop = f.demographics?.population || 1;
-                const popFactor = Math.min(1, Math.log10(pop) / 6);
 
                 const baseDelay = rng() * 60;
                 const sizeDelay = popFactor * 30;
