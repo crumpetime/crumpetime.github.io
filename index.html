@@ -310,12 +310,10 @@
       }
       @media only screen and (min-width: 600px){
         width: 20vw;
-        right: 10vw;
+        right: 5vw;
       }
       position: absolute;
       top: 30vh;
-
-
       max-height: 70vh;
       overflow-y: auto;
       background: white;
@@ -327,10 +325,16 @@
     "></div>
 
     <div id="stateInfoPanelLeft" style="
+      @media only screen and (max-width: 600px){
+        width: 100vw;
+        left: 0vw;
+      }
+      @media only screen and (min-width: 600px){
+        width: 20vw;
+        left: 5vw;
+      }
       position: absolute;
       top: 30vh;
-      left: 40px;
-      width: 300px;
       max-height: 70vh;
       overflow-y: auto;
       background: white;
