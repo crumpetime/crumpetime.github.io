@@ -1874,7 +1874,7 @@
             const rng = countyRNG(f.properties.GEOID + "-trickle");
             perTickRate = Math.max(100, Math.floor(rng() * 1000));
           } else {
-            perTickRate = c.rate;
+            perTickRate = c.rate + (countyRNG(f.properties.GEOID) * 200);
           }
 
           let capacity = perTickRate * ticksAvailable;
