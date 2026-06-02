@@ -191,7 +191,7 @@
 
     #stateInfoPanelRight {
       max-width: 100vw;
-      width: 40vw;
+      width: 35vw;
       right: 5vw;
       position: absolute;
       top: 30vh;
@@ -207,7 +207,7 @@
 
     #stateInfoPanelLeft {
       max-width: 100vw;
-      width: 40vw;
+      width: 35vw;
       left: 5vw;
       position: absolute;
       top: 30vh;
@@ -238,6 +238,7 @@
       border-radius: 6px;
       font-family: Lato, sans-serif;
       display: none;
+      overflow-x: auto;
     }
 
     #infoPanel{
@@ -278,12 +279,12 @@
       }
       #map-legend{
         position: absolute;
-        bottom: -10vh;
+        bottom: -56vh;
         left: 0px;
         width: 100%;
         background: rgba(255, 255, 255, 0.9);
         box-shadow: none;
-        z-index: -1;
+        z-index: 9999;
         pointer-events: none;
       }
       #districtResults{
@@ -292,6 +293,7 @@
         bottom: 100vh;
         width: 100%;
         box-sizing: border-box;
+        margin: 110vw 0vw;
       }
       #infoPanel{
         left:0px;
