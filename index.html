@@ -256,7 +256,7 @@
       display: none;
     }
 
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 600px) {
       #stateInfoPanelRight {
         width: 100%;
         right: 0vw;
@@ -1147,8 +1147,8 @@
       // Canonical simulation start (example: 8pm ET Nov 5, 2024 ≈ 2024-11-06T01:00:00Z)
       //const SIM_START_TIME = Date.UTC(2000,3,30,1,51,50);
       //const SIM_START_TIME = new Date(Date.UTC(2026, 5, 1, 11, 30, 0));
-      const SIM_START_TIME = new Date(Date.UTC(2026, 4, 1, 4, 30, 0));
-      //const SIM_START_TIME = Date.now() + 10;
+      //const SIM_START_TIME = new Date(Date.UTC(2026, 4, 1, 4, 30, 0));
+      const SIM_START_TIME = Date.now() + 10;
       //const SIM_START_TIME = new Date(Date.UTC(2026, 3, 10, 2, 15, 0));
 
       const DEM_CANDIDATE_NAME = "Alexandria Ocasio-Cortez";
@@ -1874,8 +1874,9 @@
             const rng = countyRNG(f.properties.GEOID + "-trickle");
             perTickRate = Math.max(100, Math.floor(rng() * 1000));
           } else {
-            //perTickRate = c.rate + (countyRNG(f.properties.GEOID) * 200);
-            perTickRate = c.rate;
+            const rng = countyRNG(f.properties.GEOID);
+            perTickRate = c.rate + Math.floor(rng() * 10000);
+            //perTickRate = c.rate;
           }
 
           let capacity = perTickRate * ticksAvailable;
