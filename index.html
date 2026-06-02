@@ -488,7 +488,7 @@
     align-items:center;
     margin-bottom:10px;
   ">
-        <h3 style="margin:0;">State Call Feed</h3>
+        <h3 style="margin:0;">Calls </h3>
         <button id="callFeedToggle" onclick="toggleCallFeed()" style="
       border:none;
       background:none;
@@ -1199,12 +1199,12 @@
       // Canonical simulation start (example: 8pm ET Nov 5, 2024 ≈ 2024-11-06T01:00:00Z)
       //const SIM_START_TIME = Date.UTC(2000,3,30,1,51,50);
       //const SIM_START_TIME = new Date(Date.UTC(2026, 5, 1, 11, 30, 0));
-      //const SIM_START_TIME = new Date(Date.UTC(2026, 4, 1, 4, 30, 0));
-      const SIM_START_TIME = Date.now();
+      const SIM_START_TIME = new Date(Date.UTC(2026, 5, 2, 12, 30, 0));
+      //const SIM_START_TIME = Date.now();
       //const SIM_START_TIME = new Date(Date.UTC(2026, 3, 10, 2, 15, 0));
 
-      const DEM_CANDIDATE_NAME = "Alexandria Ocasio-Cortez";
-      const GOP_CANDIDATE_NAME = "Marco Rubio";
+      const DEM_CANDIDATE_NAME = "Rahm Emanuel";
+      const GOP_CANDIDATE_NAME = "JD Vance";
       const OTH_CANDIDATE_NAME = "Other"
 
       const DEM_UI_COLOUR_1 = "#2b53cc";
@@ -1215,8 +1215,8 @@
       //console.log("start date (UTC): " + SIM_START_TIME.toUTCString());
       console.log("start date: " + SIM_START_TIME.toLocaleString("en-GB", { timeZone: "EST" }));
 
-      const SIM_MS_PER_TICK = 1000 //default = 60000 (1 minute)
-      const TICK_MS = 1000;
+      const SIM_MS_PER_TICK = 60000 //default = 60000 (1 minute)
+      const TICK_MS = 60000;
 
       let currentTick = 0;
       let lastSimulatedTick = 0;
@@ -3511,7 +3511,7 @@
               return countiesData.features.every(f => f.counting?.done);
             }
 
-            const FAST = true;
+            const FAST = false;
 
             async function fastForwardToTick(targetTick) {
               const overlay = document.getElementById("loadingOverlay");
@@ -3753,35 +3753,14 @@
           boostDEM: -0.05
         },
 
-        "Rockland County, New York": {
-          radiusKm: 20,
-          boostDEM: -0.04
-        },
 
-        "Bronx County, New York": {
-          radiusKm: 20,
-          boostDEM: -0.01
-        },
-
-        "Bronx County, New York": {
-          radiusKm: 40,
-          boostDEM: -0.01
-        },
 
         "Cook County, Illinois": {
-          radiusKm: 40,
-          boostDEM: +0.01
-        },
-
-        "Cook County, Illinois": {
-          radiusKm: 40,
-          boostDEM: +0.015
-        },
-
-        "Warren County, Kentucky": {
           radiusKm: 40,
           boostDEM: -0.015
         },
+
+
 
        // "Ingham County, Michigan": {
        //   radiusKm: 80,
@@ -3789,35 +3768,7 @@
        //   boostOTH: +0.08
        // },
 
-        "Hill County, Montana": {
-          radiusKm: 80,
-          boostDEM: +0.02,
-        },
 
-        "Yellowstone County, Montana": {
-          radiusKm: 100,
-          boostDEM: +0.02,
-        },
-
-        "Big Horn County, Montana": {
-          radiusKm: 100,
-          boostDEM: +0.02,
-        },
-
-        "Powell County, Montana": {
-          radiusKm: 100,
-          boostDEM: +0.02,
-        },
-
-        "Cascade County, Montana": {
-          radiusKm: 80,
-          boostDEM: +0.04,
-        },
-
-        "Silver Bow County, Montana": {
-          radiusKm: 80,
-          boostDEM: +0.04,
-        },
 
         "District 17, Alaska": {// i hate alaska
           radiusKm: 100,
@@ -3976,65 +3927,65 @@
         // ---------------------------------------------------------
         // RACE
         // ---------------------------------------------------------
-        pctWhite: { d: +0.005, r: -0.005, o: +0.001, center: 0.65, scale: 0.22, absolute: false },
-        pctBlack: { d: +0.005, r: -0.002, o: 0, center: 0.18, scale: 0.18, absolute: true },
-        pctAsian: { d: +0.011, r: -0.0011, o: 0, center: 0.05, scale: 0.05, absolute: true },
-        pctHispanic: { d: -0.0158, r: +0.0155, o: 0, center: 0.12, scale: 0.10, absolute: true },
+        pctWhite: { d: +0.001, r: -0.001, o: +0.001, center: 0.65, scale: 0.22, absolute: false },
+        pctBlack: { d: -0.005, r: +0.002, o: +0.003, center: 0.18, scale: 0.18, absolute: true },
+        pctAsian: { d: +0.001, r: -0.001, o: 0, center: 0.05, scale: 0.05, absolute: true },
+        pctHispanic: { d: -0.008, r: +0.005, o: +0.002, center: 0.12, scale: 0.10, absolute: true },
 
         // ---------------------------------------------------------
         // AGE
         // ---------------------------------------------------------
-        pct18to29: { d: +0.05, r: -0.06, o: +0.001, center: 0.18, scale: 0.10, absolute: true },
-        pct30to44: { d: +0.0041, r: -0.0041, o: 0, center: 0.22, scale: 0.10, absolute: true },
-        pct45to64: { d: +0.0015, r: -0.0005, o: 0, center: 0.35, scale: 0.15, absolute: false },
+        pct18to29: { d: -0.02, r: +0.01, o: +0.01, center: 0.18, scale: 0.10, absolute: true },
+        pct30to44: { d: -0.0023, r: +0.0023, o: 0, center: 0.22, scale: 0.10, absolute: true },
+        pct45to64: { d: -0.0015, r: +0.0005, o: 0, center: 0.35, scale: 0.15, absolute: false },
         pct65over: { d: +0.0003, r: -0.0004, o: +0.0001, center: 0.18, scale: 0.10, absolute: false },
 
         // ---------------------------------------------------------
         // EDUCATION
         // ---------------------------------------------------------
-        educationCollege: { d: +0.03, r: -0.03, o: 0, center: 0.4, scale: 0.12, absolute: true },
-        educationHS: { d: -0.01, r: +0.01, o: 0, center: 0.40, scale: 0.20, absolute: false },
-        educationBA: { d: +0.04, r: -0.04, o: 0, center: 0.20, scale: 0.10, absolute: true },
-        educationGrad: { d: +0.04, r: -0.004, o: 0, center: 0.10, scale: 0.05, absolute: true },
+        educationCollege: { d: -0.01, r: 0, o: +0.01, center: 0.4, scale: 0.12, absolute: true },
+        educationHS: { d: +0.004, r: -0.004, o: 0, center: 0.40, scale: 0.20, absolute: false },
+        educationBA: { d: -0.01, r: +0, o: +0.01, center: 0.20, scale: 0.10, absolute: true },
+        educationGrad: { d: -0.01, r: +0.004, o: +0.01, center: 0.10, scale: 0.05, absolute: true },
 
         // ---------------------------------------------------------
         // INCOME — high‑income metros trend D; rural poverty trends R
         // ---------------------------------------------------------
-        medianIncome: { d: +0.0065, r: -0.0055, o: 0, center: 60000, scale: 10000, absolute: true },
-        pctPoverty: { d: -0.004, r: +0.003, o: 0, center: 0.15, scale: 0.10, absolute: false },
+        medianIncome: { d: +0.0065, r: -0.0065, o: 0, center: 60000, scale: 10000, absolute: true },
+        pctPoverty: { d: -0.008, r: +0.005, o: +0.003, center: 0.15, scale: 0.10, absolute: false },
 
         // ---------------------------------------------------------
         // HOUSING / DENSITY
         // ---------------------------------------------------------
         //density:         { d: +0.0045, r: -0.0025, o: 0, center: 350, scale: 550, absolute: true },
-        densityLow: { d: -0.0415, r: +0.0415, o: 0, center: 0.5, scale: 0.5, absolute: true },
-        densityHigh: { d: -0.0004, r: +0.0004, o: 0, center: 0.5, scale: 0.5, absolute: true },
+        densityLow: { d: -0.04, r: +0.04, o: 0, center: 0.5, scale: 0.5, absolute: true },
+        densityHigh: { d: -0.001, r: +0.001, o: 0, center: 0.5, scale: 0.5, absolute: true },
 
-        pctRenters: { d: +0.0405, r: -0.0400, o: 0, center: 0.35, scale: 0.18, absolute: true },
-        pctHomeowners: { d: -0.0010, r: +0.0015, o: 0, center: 0.65, scale: 0.20, absolute: false },
-        medianHomeValue: { d: +0.004, r: -0.004, o: 0, center: 275000, scale: 150000, absolute: true },
+        pctRenters: { d: -0.0035, r: +0.0030, o: +0.0005, center: 0.35, scale: 0.18, absolute: true },
+        pctHomeowners: { d: +0.0040, r: -0.0040, o: 0, center: 0.65, scale: 0.20, absolute: false },
+        medianHomeValue: { d: +0.006, r: -0.006, o: 0, center: 275000, scale: 150000, absolute: true },
 
         // ---------------------------------------------------------
         // NATIVITY 
         // ---------------------------------------------------------
-        pctForeignBorn: { d: +0.0035, r: -0.0028, o: 0, center: 0.12, scale: 0.10, absolute: true },
-        pctLimitedEnglish: { d: +0.0018, r: -0.0015, o: 0, center: 0.05, scale: 0.05, absolute: true },
+        pctForeignBorn: { d: +0.003, r: -0.0028, o: 0, center: 0.12, scale: 0.10, absolute: true },
+        pctLimitedEnglish: { d: +0.0008, r: -0.0015, o: 0, center: 0.05, scale: 0.05, absolute: true },
 
         // ---------------------------------------------------------
         // INDUSTRY
         // ---------------------------------------------------------
-        pctAgriculture: { d: +0.0042, r: -0.0045, o: 0, center: 0.05, scale: 0.05, absolute: true },
-        pctManufacturing: { d: +0.0010, r: -0.0012, o: 0, center: 0.10, scale: 0.10, absolute: true },
+        pctAgriculture: { d: -0.0012, r: +0.0015, o: 0, center: 0.05, scale: 0.05, absolute: true },
+        pctManufacturing: { d: -0.0030, r: +0.0032, o: 0, center: 0.10, scale: 0.10, absolute: true },
         pctRetail: { d: +0.0042, r: -0.0046, o: 0, center: 0.10, scale: 0.10, absolute: true },
-        pctProfessional: { d: +0.0072, r: -0.0070, o: +0.001, center: 0.15, scale: 0.10, absolute: true },
-        pctEducation: { d: +0.0018, r: -0.0013, o: 0, center: 0.10, scale: 0.10, absolute: true },
-        pctHealthcare: { d: +0.0058, r: -0.0050, o: 0, center: 0.12, scale: 0.10, absolute: true },
-        pctPublicAdmin: { d: +0.0190, r: -0.0162, o: 0, center: 0.05, scale: 0.05, absolute: true },
+        pctProfessional: { d: +0.002, r: -0.002, o: +0.001, center: 0.15, scale: 0.10, absolute: true },
+        pctEducation: { d: +0.0004, r: -0.0003, o: 0, center: 0.10, scale: 0.10, absolute: true },
+        pctHealthcare: { d: +0.0018, r: -0.0010, o: 0, center: 0.12, scale: 0.10, absolute: true },
+        pctPublicAdmin: { d: +0.0050, r: -0.005, o: 0, center: 0.05, scale: 0.05, absolute: true },
 
         // ---------------------------------------------------------
         // HOUSING AGE
         // ---------------------------------------------------------
-        pctNewHousing: { d: +0.002, r: -0.002, o: 0, center: 0.10, scale: 0.10, absolute: true },
+        pctNewHousing: { d: +0.004, r: -0.004, o: 0, center: 0.10, scale: 0.10, absolute: true },
       };
 
       const DEMO_WEIGHTS_DEFAULT = { //all are shifts relative to 2024
