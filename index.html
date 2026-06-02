@@ -1148,7 +1148,7 @@
       //const SIM_START_TIME = Date.UTC(2000,3,30,1,51,50);
       //const SIM_START_TIME = new Date(Date.UTC(2026, 5, 1, 11, 30, 0));
       //const SIM_START_TIME = new Date(Date.UTC(2026, 4, 1, 4, 30, 0));
-      const SIM_START_TIME = Date.now() + 10;
+      const SIM_START_TIME = Date.now();
       //const SIM_START_TIME = new Date(Date.UTC(2026, 3, 10, 2, 15, 0));
 
       const DEM_CANDIDATE_NAME = "Alexandria Ocasio-Cortez";
@@ -1163,8 +1163,8 @@
       //console.log("start date (UTC): " + SIM_START_TIME.toUTCString());
       console.log("start date: " + SIM_START_TIME.toLocaleString("en-GB", { timeZone: "EST" }));
 
-      const SIM_MS_PER_TICK = 60000 //default = 60000 (1 minute)
-      const TICK_MS = 60000;
+      const SIM_MS_PER_TICK = 1000 //default = 60000 (1 minute)
+      const TICK_MS = 1000;
 
       let currentTick = 0;
       let lastSimulatedTick = 0;
