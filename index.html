@@ -2265,6 +2265,8 @@
         const oShare = total0 ? (o0 / total0) * 100 : 0;
 
         //console.log("got time " + serverTime);
+        let a = Date.now();
+        console.log(a);
         console.log((Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK)) - Date.now())/60000)));
 
         const parties = [
