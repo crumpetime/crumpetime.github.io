@@ -300,14 +300,20 @@
       margin:auto;
     "></div>
 
-
+    
 
     </button>
     <div id="stateInfoPanelRight" style="
+      @media only screen and (max-width: 600px){
+        width: 100vw;
+      }
+      @media only screen and (min-width: 600px){
+        width: 20vw;
+      }
       position: absolute;
       top: 30vh;
       right: 10vw;
-      width: 150vw;
+
       max-height: 70vh;
       overflow-y: auto;
       background: white;
