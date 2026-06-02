@@ -2267,7 +2267,7 @@
         //console.log("got time " + serverTime);
         let a = Date.now();
         console.log(a);
-        console.log((Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK)) - Date.now())/60000)));
+        console.log((Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK)) - a)/60000)));
 
         const parties = [
           { name: DEM_CANDIDATE_NAME, votes: d0, share: dShare, color: DEM_UI_COLOUR_1 },
@@ -2415,7 +2415,7 @@
         
 
         <div style="margin-bottom: 12px; font-size: 14px;">
-          <strong>Counting begins in ${(Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK)) - Date.now())/60000))} minute(s).</strong><br>
+          <strong>Counting begins in ${(Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK)) - a)/60000))} minute(s).</strong><br>
         </div>
 
         <div style="font-size: 14px;">
@@ -2462,7 +2462,7 @@
         ">Colour by swing from 2024</button>
 
         <div style="margin-bottom: 12px; font-size: 14px;">
-          <strong><strong>Counting begins in ${(Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK)) - Date.now())/60000))} minute(s).</strong><br></strong><br>
+          <strong><strong>Counting begins in ${(Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK)) - a)/60000))} minute(s).</strong><br></strong><br>
         </div>
 
         <div style="font-size: 14px;">
