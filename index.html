@@ -204,13 +204,6 @@
       display: none;
     }
 
-    @media only screen and (max-width: 900px) {
-      #stateInfoPanelRight {
-        width: 100vw;
-        right: 0;
-      }
-    }
-
     #stateInfoPanelLeft {
       width: 40vw;
       left: 5vw;
@@ -226,12 +219,55 @@
       display: none;
     }
 
+    #map{
+      width: 100vw;
+      height: calc(80vh - 110px);
+      position: relative;
+      margin:auto;
+    }
+
+    #districtResults{
+      width: 70vw;
+      left: 10vw;
+      margin: 5vw;
+      padding: 12px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: Lato, sans-serif;
+      display: none;
+    }
+
     @media only screen and (max-width: 900px) {
       #stateInfoPanelRight {
         width: 100vw;
+        right: 0;
+        top: 35vh;
+      }
+      #stateInfoPanelLeft {
+        width: 100vw;
         left: 0;
+        top: 35vh;
+      }
+      #map{
+        width: 100vw;
+        height: calc(80vh - 110px - 35vh);
+        position: relative;
+        margin:auto;
+      }
+      #map-legend{
+        position: absolute;
+        bottom: -100px;
+        left: 0px;
+        width: 100vw;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: none;
+        z-index: 9999;
+        pointer-events: none;
       }
     }
+
+
 
 
   </style>
@@ -339,12 +375,7 @@
 
 
 
-    <div id="map" style="
-      width: 100vw;
-      height: calc(80vh - 110px);
-      position: relative;
-      margin:auto;
-    "></div>
+    <div id="map"></div>
 
     
 
@@ -4843,17 +4874,7 @@
 
 
     </script>
-    <div id="districtResults" style="
-      width: 70vw;
-      left: 10vw;
-      margin: 5vw;
-      padding: 12px;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: Lato, sans-serif;
-      display: none;
-    "></div>
+    <div id="districtResults"></div>
 
     <div style="height: 10vh"></div>
 
