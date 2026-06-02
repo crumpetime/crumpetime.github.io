@@ -2247,7 +2247,7 @@
         const callTick = call_times[stateName];
         const startTick = STATE_START_TIMES[stateName];
         const callTimeStr = callTick != null ? formatCallTime(callTick) : null;
-        const serverTime = getServerTime().getTime();
+        //const serverTime = getServerTime().getTime();
 
         const d0 = totals.d;
         const r0 = totals.r;
@@ -2264,7 +2264,7 @@
         const rShare = total0 ? (r0 / total0) * 100 : 0;
         const oShare = total0 ? (o0 / total0) * 100 : 0;
 
-        console.log("got time " + serverTime);
+        //console.log("got time " + serverTime);
 
         const parties = [
           { name: DEM_CANDIDATE_NAME, votes: d0, share: dShare, color: DEM_UI_COLOUR_1 },
@@ -2412,7 +2412,7 @@
         
 
         <div style="margin-bottom: 12px; font-size: 14px;">
-          <strong>Counting begins in ${(Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK / 60000)) - getServerTime())))} minutes.</strong><br>
+          <strong>Counting begins in ${(Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK)) - Date.now())/60000))} minutes.</strong><br>
         </div>
 
         <div style="font-size: 14px;">
@@ -2459,7 +2459,7 @@
         ">Colour by swing from 2024</button>
 
         <div style="margin-bottom: 12px; font-size: 14px;">
-          <strong><strong>Counting begins in ${(Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK / 60000)) - await getServerTime())))} minutes.</strong><br></strong><br>
+          <strong><strong>Counting begins in ${(Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK)) - Date.now())/60000))} minutes.</strong><br></strong><br>
         </div>
 
         <div style="font-size: 14px;">
