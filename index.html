@@ -1120,6 +1120,58 @@
         zindex: 650
       };
 
+      const STATE_START_TIMES = {
+        "Alabama": 120,
+        "Alaska": 360,
+        "Arizona": 180,
+        "Arkansas": 150,
+        "California": 300,
+        "Colorado": 180,
+        "Connecticut": 120,
+        "Delaware": 120,
+        "Florida": 120,
+        "Georgia": 60,
+        "Hawaii": 360,
+        "Idaho": 300,
+        "Illinois": 120,
+        "Indiana": 0,
+        "Iowa": 180,
+        "Kansas": 180,
+        "Kentucky": 0,
+        "Louisiana": 180,
+        "Maine": 120,
+        "Maryland": 120,
+        "Massachusetts": 120,
+        "Michigan": 180,
+        "Minnesota": 180,
+        "Mississippi": 120,
+        "Missouri": 120,
+        "Montana": 240,
+        "Nebraska": 180,
+        "Nevada": 240,
+        "New Hampshire": 120,
+        "New Jersey": 120,
+        "New Mexico": 180,
+        "New York": 180,
+        "North Carolina": 90,
+        "North Dakota": 180,
+        "Ohio": 90,
+        "Oklahoma": 120,
+        "Oregon": 300,
+        "Pennsylvania": 120,
+        "Rhode Island": 120,
+        "South Carolina": 60,
+        "South Dakota": 180,
+        "Tennessee": 120,
+        "Texas": 180,
+        "Utah": 240,
+        "Vermont": 60,
+        "Virginia": 60,
+        "Washington": 300,
+        "West Virginia": 90,
+        "Wisconsin": 180,
+        "Wyoming": 180
+      };
 
 
       let selectedCounty = null;
@@ -2193,6 +2245,7 @@
         const stateName = stateFeature.properties.NAME;
         const totals = getStateTotals(stateName);
         const callTick = call_times[stateName];
+        const startTick = STATE_START_TIMES[statename];
         const callTimeStr = callTick != null ? formatCallTime(callTick) : null;
 
         const d0 = totals.d;
@@ -2245,7 +2298,7 @@
         });
 
 
-
+        if (currentTick > startTick){
         stateInfoPanelRight.innerHTML = `
         <h3 style="margin-bottom: 6px; display:flex; justify-content:space-between; align-items:center;">
           <span>${stateName}</span>
@@ -2328,7 +2381,91 @@
           ${barsHTML}
         </div>
       `;
+      }
+      else{
+        stateInfoPanelRight.innerHTML = `
+        <h3 style="margin-bottom: 6px; display:flex; justify-content:space-between; align-items:center;">
+          <span>${stateName}</span>
+          ${statusBadge}
+        </h3>
+        ${callTimeStr ? `<div style="font-size:12px; color:#666; margin-bottom:8px;">
+          Called at ${callTimeStr}
+        </div>` : ""}
 
+        <div style="margin-bottom: 12px; font-size: 14px;">
+          <span style="color: #666;">
+            ${STATE_ELECTORAL_VOTES[stateName].toLocaleString()} electoral votes
+          </span>
+        </div>
+
+        <button id="drillButton" style="
+          margin-top: 6px;
+          margin-bottom: 12px;
+          padding: 6px 12px;
+          background: #2f82bc;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        ">View Counties</button>
+        
+
+        <div style="margin-bottom: 12px; font-size: 14px;">
+          <strong>Counting begins in ${(Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK / 60000)) - getServerTime())))} minutes.</strong><br>
+        </div>
+
+        <div style="font-size: 14px;">
+          ${barsHTML}
+        </div>
+      `;
+
+        stateInfoPanelLeft.innerHTML = `
+        <h3 style="margin-bottom: 6px; display:flex; justify-content:space-between; align-items:center;">
+          <span>${stateName}</span>
+          ${statusBadge}
+        </h3>
+        ${callTimeStr ? `<div style="font-size:12px; color:#666; margin-bottom:8px;">
+          Called at ${callTimeStr}
+        </div>` : ""}
+
+        <div style="margin-bottom: 12px; font-size: 14px;">
+          <span style="color: #666;">
+            ${STATE_ELECTORAL_VOTES[stateName].toLocaleString()} electoral votes
+          </span>
+        </div>
+
+
+        <button id="backButton" style="
+          margin-top: 6px;
+          margin-bottom: 12px;
+          padding: 6px 12px;
+          background: #2f82bc;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        ">Back to states</button>
+
+        <button id="swingButton" style="
+          margin-top: 6px;
+          margin-bottom: 12px;
+          padding: 6px 12px;
+          background: #2f82bc;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        ">Colour by swing from 2024</button>
+
+        <div style="margin-bottom: 12px; font-size: 14px;">
+          <strong><strong>Counting begins in ${(Math.ceil(Math.abs(SIM_START_TIME + (startTick * (SIM_MS_PER_TICK / 60000)) - getServerTime())))} minutes.</strong><br></strong><br>
+        </div>
+
+        <div style="font-size: 14px;">
+          ${barsHTML}
+        </div>
+      `;
+      }
 
         const btn = document.getElementById("drillButton");
         if (btn) {
@@ -3085,58 +3222,7 @@
 
             //counting stuff below here
 
-            const STATE_START_TIMES = {
-              "Alabama": 120,
-              "Alaska": 360,
-              "Arizona": 180,
-              "Arkansas": 150,
-              "California": 300,
-              "Colorado": 180,
-              "Connecticut": 120,
-              "Delaware": 120,
-              "Florida": 120,
-              "Georgia": 60,
-              "Hawaii": 360,
-              "Idaho": 300,
-              "Illinois": 120,
-              "Indiana": 0,
-              "Iowa": 180,
-              "Kansas": 180,
-              "Kentucky": 0,
-              "Louisiana": 180,
-              "Maine": 120,
-              "Maryland": 120,
-              "Massachusetts": 120,
-              "Michigan": 180,
-              "Minnesota": 180,
-              "Mississippi": 120,
-              "Missouri": 120,
-              "Montana": 240,
-              "Nebraska": 180,
-              "Nevada": 240,
-              "New Hampshire": 120,
-              "New Jersey": 120,
-              "New Mexico": 180,
-              "New York": 180,
-              "North Carolina": 90,
-              "North Dakota": 180,
-              "Ohio": 90,
-              "Oklahoma": 120,
-              "Oregon": 300,
-              "Pennsylvania": 120,
-              "Rhode Island": 120,
-              "South Carolina": 60,
-              "South Dakota": 180,
-              "Tennessee": 120,
-              "Texas": 180,
-              "Utah": 240,
-              "Vermont": 60,
-              "Virginia": 60,
-              "Washington": 300,
-              "West Virginia": 90,
-              "Wisconsin": 180,
-              "Wyoming": 180
-            };
+
 
 
 
@@ -3240,7 +3326,7 @@
 
             const GLOBAL_FINISH_TICK = initCountingModel();
 
-
+            //unused; might implement later or not idk
             function computeNextEventTick(f, tick) {
               const c = f.counting;
               if (!c || c.done) return Infinity;
