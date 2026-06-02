@@ -1764,6 +1764,7 @@
 
             const batch = c.batches[c.currentBatch];
             const batchStart = c.startTick + batch.delay;
+            
             if (batch.dump) {
               // Apply all votes instantly
               const v = batch.votes;
