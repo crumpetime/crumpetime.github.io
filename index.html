@@ -1874,7 +1874,8 @@
             const rng = countyRNG(f.properties.GEOID + "-trickle");
             perTickRate = Math.max(100, Math.floor(rng() * 1000));
           } else {
-            perTickRate = c.rate + (countyRNG(f.properties.GEOID) * 200);
+            //perTickRate = c.rate + (countyRNG(f.properties.GEOID) * 200);
+            perTickRate = c.rate;
           }
 
           let capacity = perTickRate * ticksAvailable;
@@ -3209,8 +3210,8 @@
                     remaining: 0
                   },
                   startTick: stateStart + countyDelay,
-                  batches: DEFAULT_BATCHES.map(b => ({ ...b, counted: 0, done: false })),
-                  //batches: batches.map(b => ({ ...b, counted: 0, done: false })),
+                  //batches: DEFAULT_BATCHES.map(b => ({ ...b, counted: 0, done: false })),
+                  batches: batches.map(b => ({ ...b, counted: 0, done: false })),
                   currentBatch: 0,
                   done: false,
                   finishTick: 0
