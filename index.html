@@ -1205,7 +1205,7 @@
       //const SIM_START_TIME = new Date(Date.UTC(2026, 3, 10, 2, 15, 0));
 
       const DEM_CANDIDATE_NAME = "Ahmad Hassan";
-      const GOP_CANDIDATE_NAME = "Ken Paxton";
+      const GOP_CANDIDATE_NAME = "Doug Burgum";
       const OTH_CANDIDATE_NAME = "Other"
 
       const DEM_UI_COLOUR_1 = "#2b53cc";
@@ -1216,8 +1216,8 @@
       //console.log("start date (UTC): " + SIM_START_TIME.toUTCString());
       console.log("start date: " + SIM_START_TIME.toLocaleString("en-GB", { timeZone: "EST" }));
 
-      const SIM_MS_PER_TICK = 1000 //default = 60000 (1 minute)
-      const TICK_MS = 1000;
+      const SIM_MS_PER_TICK = 500; //default = 60000 (1 minute)
+      const TICK_MS = 500;
 
       let currentTick = 0;
       let lastSimulatedTick = 0;
