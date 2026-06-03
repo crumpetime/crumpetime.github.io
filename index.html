@@ -1141,6 +1141,7 @@
         "Louisiana": 180,
         "Maine": 120,
         "Maryland": 120,
+        "District of Columbia": 120,
         "Massachusetts": 120,
         "Michigan": 180,
         "Minnesota": 180,
@@ -1199,12 +1200,12 @@
       // Canonical simulation start (example: 8pm ET Nov 5, 2024 ≈ 2024-11-06T01:00:00Z)
       //const SIM_START_TIME = Date.UTC(2000,3,30,1,51,50);
       //const SIM_START_TIME = new Date(Date.UTC(2026, 5, 1, 11, 30, 0));
-      const SIM_START_TIME = new Date(Date.UTC(2026, 5, 2, 13, 0, 0));
-      //const SIM_START_TIME = Date.now();
+      //const SIM_START_TIME = new Date(Date.UTC(2026, 5, 2, 13, 0, 0));
+      const SIM_START_TIME = Date.now();
       //const SIM_START_TIME = new Date(Date.UTC(2026, 3, 10, 2, 15, 0));
 
-      const DEM_CANDIDATE_NAME = "Rahm Emanuel";
-      const GOP_CANDIDATE_NAME = "JD Vance";
+      const DEM_CANDIDATE_NAME = "Ahmad Hassan";
+      const GOP_CANDIDATE_NAME = "Ken Paxton";
       const OTH_CANDIDATE_NAME = "Other"
 
       const DEM_UI_COLOUR_1 = "#2b53cc";
@@ -1215,8 +1216,8 @@
       //console.log("start date (UTC): " + SIM_START_TIME.toUTCString());
       console.log("start date: " + SIM_START_TIME.toLocaleString("en-GB", { timeZone: "EST" }));
 
-      const SIM_MS_PER_TICK = 15000 //default = 60000 (1 minute)
-      const TICK_MS = 15000;
+      const SIM_MS_PER_TICK = 1000 //default = 60000 (1 minute)
+      const TICK_MS = 1000;
 
       let currentTick = 0;
       let lastSimulatedTick = 0;
@@ -3260,7 +3261,7 @@
                 const stateStart = STATE_START_TIMES[stateName] || 0;
 
                 const baseDelay = rng() * 60;
-                const sizeDelay = popFactor * 30;
+                const sizeDelay = popFactor * 2;
                 const countyDelay = Math.floor(baseDelay + sizeDelay);
 
                 const lagFrequency = Math.floor(rng() * 200) + 250;
@@ -3515,7 +3516,7 @@
               return countiesData.features.every(f => f.counting?.done);
             }
 
-            const FAST = false;
+            const FAST = true;
 
             async function fastForwardToTick(targetTick) {
               const overlay = document.getElementById("loadingOverlay");
@@ -3931,7 +3932,7 @@
         // ---------------------------------------------------------
         // RACE
         // ---------------------------------------------------------
-        pctWhite: { d: +0.001, r: -0.001, o: +0.001, center: 0.65, scale: 0.22, absolute: false },
+        pctWhite: { d: +0.901, r: -0.901, o: +0.001, center: 0.65, scale: 0.22, absolute: false },
         pctBlack: { d: -0.005, r: +0.002, o: +0.003, center: 0.18, scale: 0.18, absolute: true },
         pctAsian: { d: +0.001, r: -0.001, o: 0, center: 0.05, scale: 0.05, absolute: true },
         pctHispanic: { d: -0.008, r: +0.005, o: +0.002, center: 0.12, scale: 0.10, absolute: true },
