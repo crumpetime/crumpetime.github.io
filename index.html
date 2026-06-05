@@ -1199,13 +1199,13 @@
 
       // Canonical simulation start (example: 8pm ET Nov 5, 2024 ≈ 2024-11-06T01:00:00Z)
       //const SIM_START_TIME = Date.UTC(2000,3,30,1,51,50);
-      //const SIM_START_TIME = new Date(Date.UTC(2026, 5, 1, 11, 30, 0));
+      const SIM_START_TIME = new Date(Date.UTC(2026, 5, 5, 2, 15, 0));
       //const SIM_START_TIME = new Date(Date.UTC(2026, 5, 2, 13, 0, 0));
-      const SIM_START_TIME = Date.now();
+      //const SIM_START_TIME = Date.now();
       //const SIM_START_TIME = new Date(Date.UTC(2026, 3, 10, 2, 15, 0));
 
-      const DEM_CANDIDATE_NAME = "Ahmad Hassan";
-      const GOP_CANDIDATE_NAME = "Doug Burgum";
+      const DEM_CANDIDATE_NAME = "Tom Steyer";
+      const GOP_CANDIDATE_NAME = "Vivek Ramaswamy";
       const OTH_CANDIDATE_NAME = "Other"
 
       const DEM_UI_COLOUR_1 = "#2b53cc";
@@ -1216,8 +1216,8 @@
       //console.log("start date (UTC): " + SIM_START_TIME.toUTCString());
       console.log("start date: " + SIM_START_TIME.toLocaleString("en-GB", { timeZone: "EST" }));
 
-      const SIM_MS_PER_TICK = 500; //default = 60000 (1 minute)
-      const TICK_MS = 500;
+      const SIM_MS_PER_TICK = 30000; //default = 60000 (1 minute)
+      const TICK_MS = 30000;
 
       let currentTick = 0;
       let lastSimulatedTick = 0;
@@ -3516,7 +3516,7 @@
               return countiesData.features.every(f => f.counting?.done);
             }
 
-            const FAST = true;
+            const FAST = false;
 
             async function fastForwardToTick(targetTick) {
               const overlay = document.getElementById("loadingOverlay");
@@ -3932,43 +3932,43 @@
         // ---------------------------------------------------------
         // RACE
         // ---------------------------------------------------------
-        pctWhite: { d: +0.901, r: -0.901, o: +0.001, center: 0.65, scale: 0.22, absolute: false },
-        pctBlack: { d: -0.005, r: +0.002, o: +0.003, center: 0.18, scale: 0.18, absolute: true },
-        pctAsian: { d: +0.001, r: -0.001, o: 0, center: 0.05, scale: 0.05, absolute: true },
-        pctHispanic: { d: -0.008, r: +0.005, o: +0.002, center: 0.12, scale: 0.10, absolute: true },
+        pctWhite: { d: +0.004, r: -0.003, o: +0.001, center: 0.65, scale: 0.22, absolute: false },
+        pctBlack: { d: +0.002, r: -0.002, o: 0, center: 0.18, scale: 0.18, absolute: true },
+        pctAsian: { d: -0.003, r: +0.003, o: 0, center: 0.05, scale: 0.05, absolute: true },
+        pctHispanic: { d: +0.004, r: -0.005, o: +0.001, center: 0.12, scale: 0.10, absolute: true },
 
         // ---------------------------------------------------------
         // AGE
         // ---------------------------------------------------------
-        pct18to29: { d: -0.02, r: +0.01, o: +0.01, center: 0.18, scale: 0.10, absolute: true },
-        pct30to44: { d: -0.0023, r: +0.0023, o: 0, center: 0.22, scale: 0.10, absolute: true },
+        pct18to29: { d: +0.008, r: -0.008, o: +0.01, center: 0.18, scale: 0.10, absolute: true },
+        pct30to44: { d: -0.003, r: +0.003, o: 0, center: 0.22, scale: 0.10, absolute: true },
         pct45to64: { d: -0.0015, r: +0.0005, o: 0, center: 0.35, scale: 0.15, absolute: false },
-        pct65over: { d: +0.0003, r: -0.0004, o: +0.0001, center: 0.18, scale: 0.10, absolute: false },
+        pct65over: { d: -0.002, r: +0.0004, o: +0.0002, center: 0.18, scale: 0.10, absolute: false },
 
         // ---------------------------------------------------------
         // EDUCATION
         // ---------------------------------------------------------
-        educationCollege: { d: -0.01, r: 0, o: +0.01, center: 0.4, scale: 0.12, absolute: true },
-        educationHS: { d: +0.004, r: -0.004, o: 0, center: 0.40, scale: 0.20, absolute: false },
-        educationBA: { d: -0.01, r: +0, o: +0.01, center: 0.20, scale: 0.10, absolute: true },
-        educationGrad: { d: -0.01, r: +0.004, o: +0.01, center: 0.10, scale: 0.05, absolute: true },
+        educationCollege: { d: +0.01, r: -0.01, o: 0, center: 0.4, scale: 0.12, absolute: true },
+        educationHS: { d: -0.01, r: +0.01, o: 0, center: 0.40, scale: 0.20, absolute: false },
+        educationBA: { d: +0.01, r: -0.002, o: 0, center: 0.20, scale: 0.10, absolute: true },
+        educationGrad: { d: +0.01, r: -0.004, o: 0, center: 0.10, scale: 0.05, absolute: true },
 
         // ---------------------------------------------------------
         // INCOME — high‑income metros trend D; rural poverty trends R
         // ---------------------------------------------------------
-        medianIncome: { d: +0.0065, r: -0.0065, o: 0, center: 60000, scale: 10000, absolute: true },
-        pctPoverty: { d: -0.008, r: +0.005, o: +0.003, center: 0.15, scale: 0.10, absolute: false },
+        medianIncome: { d: +0.01, r: -0.01, o: 0, center: 60000, scale: 10000, absolute: true },
+        pctPoverty: { d: -0.01, r: +0.008, o: +0.002, center: 0.15, scale: 0.10, absolute: false },
 
         // ---------------------------------------------------------
         // HOUSING / DENSITY
         // ---------------------------------------------------------
         //density:         { d: +0.0045, r: -0.0025, o: 0, center: 350, scale: 550, absolute: true },
-        densityLow: { d: -0.04, r: +0.04, o: 0, center: 0.5, scale: 0.5, absolute: true },
-        densityHigh: { d: -0.001, r: +0.001, o: 0, center: 0.5, scale: 0.5, absolute: true },
+        densityLow: { d: -0.042, r: +0.042, o: 0, center: 0.5, scale: 0.5, absolute: true },
+        densityHigh: { d: +0.001, r: -0.001, o: 0, center: 0.5, scale: 0.5, absolute: true },
 
-        pctRenters: { d: -0.0035, r: +0.0030, o: +0.0005, center: 0.35, scale: 0.18, absolute: true },
-        pctHomeowners: { d: +0.0040, r: -0.0040, o: 0, center: 0.65, scale: 0.20, absolute: false },
-        medianHomeValue: { d: +0.006, r: -0.006, o: 0, center: 275000, scale: 150000, absolute: true },
+        pctRenters: { d: +0.0035, r: -0.0030, o: +0.0005, center: 0.35, scale: 0.18, absolute: true },
+        pctHomeowners: { d: -0.0040, r: +0.0040, o: 0, center: 0.65, scale: 0.20, absolute: false },
+        medianHomeValue: { d: +0.006, r: -0.006, o: +0.003, center: 275000, scale: 150000, absolute: true },
 
         // ---------------------------------------------------------
         // NATIVITY 
@@ -3979,18 +3979,18 @@
         // ---------------------------------------------------------
         // INDUSTRY
         // ---------------------------------------------------------
-        pctAgriculture: { d: -0.0012, r: +0.0015, o: 0, center: 0.05, scale: 0.05, absolute: true },
-        pctManufacturing: { d: -0.0030, r: +0.0032, o: 0, center: 0.10, scale: 0.10, absolute: true },
-        pctRetail: { d: +0.0042, r: -0.0046, o: 0, center: 0.10, scale: 0.10, absolute: true },
-        pctProfessional: { d: +0.002, r: -0.002, o: +0.001, center: 0.15, scale: 0.10, absolute: true },
-        pctEducation: { d: +0.0004, r: -0.0003, o: 0, center: 0.10, scale: 0.10, absolute: true },
-        pctHealthcare: { d: +0.0018, r: -0.0010, o: 0, center: 0.12, scale: 0.10, absolute: true },
-        pctPublicAdmin: { d: +0.0050, r: -0.005, o: 0, center: 0.05, scale: 0.05, absolute: true },
+        pctAgriculture: { d: -0.006, r: +0.006, o: 0, center: 0.05, scale: 0.05, absolute: true },
+        pctManufacturing: { d: -0.0067, r: +0.001, o: +0.0057, center: 0.10, scale: 0.10, absolute: true },
+        pctRetail: { d: +0.0003, r: -0.0003, o: 0, center: 0.10, scale: 0.10, absolute: true },
+        pctProfessional: { d: -0.002, r: +0.002, o: +0.001, center: 0.15, scale: 0.10, absolute: true },
+        pctEducation: { d: +0.0003, r: -0.0003, o: 0, center: 0.10, scale: 0.10, absolute: true },
+        pctHealthcare: { d: +0.001, r: -0.0010, o: 0, center: 0.12, scale: 0.10, absolute: true },
+        pctPublicAdmin: { d: +0.0020, r: -0.001, o: +0.001, center: 0.05, scale: 0.05, absolute: true },
 
         // ---------------------------------------------------------
         // HOUSING AGE
         // ---------------------------------------------------------
-        pctNewHousing: { d: +0.004, r: -0.004, o: 0, center: 0.10, scale: 0.10, absolute: true },
+        pctNewHousing: { d: +0.01, r: -0.01, o: 0, center: 0.10, scale: 0.10, absolute: true },
       };
 
       const DEMO_WEIGHTS_DEFAULT = { //all are shifts relative to 2024
